@@ -58,7 +58,8 @@ open class NetworkTask(
     val method: Method = Method.GET,
     protected val body: RequestBody? = null,
     protected val ctx: Context? = null,
-    val waitingMessage: String? = null
+    val waitingMessage: String? = null,
+    vararg val headers: Pair<String, String>
 ) {
     enum class Method {
         GET, POST, PUT, PATCH, DELETE, HEAD
@@ -112,6 +113,10 @@ open class NetworkTask(
                     Method.PUT -> it.put(body!!)
                     Method.PATCH -> it.patch(body!!)
                     Method.HEAD -> it.head()
+                }
+            }.also {
+                headers.forEach {header ->
+                    it.addHeader(header.first, header.second)
                 }
             }.build()
             OkHttpClient().newCall(request).execute()

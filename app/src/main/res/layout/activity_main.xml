@@ -12,13 +12,21 @@
         <FrameLayout
             android:id="@+id/frameLayout"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"></FrameLayout>
+            android:layout_height="match_parent">
+            <ImageView
+                    android:layout_width="248dp"
+                    android:layout_height="230dp"
+                    android:src="@android:drawable/btn_dialog"
+                    android:id="@+id/imageView3"/>
+        </FrameLayout>
 
         <com.google.android.material.navigation.NavigationView
             android:id="@+id/Navigation"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_gravity="start"
-            app:menu="@menu/navigation_items"></com.google.android.material.navigation.NavigationView>
+            app:menu="@menu/navigation_items">
+
+        </com.google.android.material.navigation.NavigationView>
     </androidx.drawerlayout.widget.DrawerLayout>
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

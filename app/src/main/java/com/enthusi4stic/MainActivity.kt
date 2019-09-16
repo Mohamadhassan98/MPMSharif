@@ -2,6 +2,7 @@ package com.enthusi4stic
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
+import androidx.fragment.app.Fragment
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
@@ -13,11 +14,11 @@ class MainActivity : AppCompatActivity() {
             when (it.itemId) {
                 R.id.networkItem -> supportFragmentManager.beginTransaction().replace(
                     R.id.frameLayout,
-                    NetworkFragment()
+                    Fragment()
                 ).commit()
                 R.id.recyclerItem -> supportFragmentManager.beginTransaction().replace(
                     R.id.frameLayout,
-                    RecyclerFragment()
+                    Fragment()
                 ).commit()
             }
             drawer.closeDrawers()

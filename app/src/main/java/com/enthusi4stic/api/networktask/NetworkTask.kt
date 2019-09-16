@@ -2,7 +2,11 @@ package com.enthusi4stic.api.networktask
 
 import android.annotation.SuppressLint
 import android.content.Context
+import android.graphics.Bitmap
+import android.graphics.BitmapFactory
 import android.os.AsyncTask
+import android.widget.ImageView
+import androidx.collection.LruCache
 import com.beust.klaxon.Klaxon
 import com.enthusi4stic.api.progressdialog.CircularProgressBarDialog
 import okhttp3.*
@@ -10,7 +14,6 @@ import okhttp3.MediaType.Companion.toMediaType
 import okhttp3.RequestBody.Companion.toRequestBody
 import okhttp3.internal.EMPTY_REQUEST
 import org.intellij.lang.annotations.Language
-import java.lang.Exception
 
 fun Any.toJson(): String = Klaxon().toJsonString(this)
 
@@ -18,17 +21,19 @@ enum class MediaType(private val mimeType: String) {
     JSON("application/json"),
     PlainText("text/plain"),
     FormMultipart("multipart/form-data");
+
     fun encode(encoder: String = "utf-8") = "${this.mimeType}; charset=$encoder".toMediaType()
 }
 
 val String.jsonRequestBody get() = this.toRequestBody(MediaType.JSON.encode())
 
-val Map<String, String>.formBody get() =
-    FormBody.Builder().also {
-        this.forEach { (key, value) ->
-            it.add(key, value)
-        }
-    }.build()
+val Map<String, String>.formBody
+    get() =
+        FormBody.Builder().also {
+            this.forEach { (key, value) ->
+                it.add(key, value)
+            }
+        }.build()
 
 fun formBody(vararg p0: Pair<String, String>) =
     FormBody.Builder().also {
@@ -86,7 +91,7 @@ open class NetworkTask(
     }
 
     @SuppressLint("StaticFieldLeak")
-    inner class Task: AsyncTask<RequestBody, Unit, Response>() {
+    inner class Task : AsyncTask<RequestBody, Unit, Response>() {
 
         var progressDialog: CircularProgressBarDialog? = null
 
@@ -120,5 +125,26 @@ open class NetworkTask(
             progressDialog?.dismiss()
             onCallBack(result)
         }
+    }
+}
+
+class ImageLoadTask(private val url: String, private val imageView: ImageView) {
+    fun load() {
+        var bitmap = cache[url]
+        if (bitmap != null) {
+            imageView.setImageBitmap(bitmap)
+        } else {
+            NetworkTask(url).setOnCallBack {
+                if (it == null) return@setOnCallBack
+                if (it.isSuccessful) {
+                    bitmap = BitmapFactory.decodeStream(it.body?.byteStream())
+                    imageView.setImageBitmap(bitmap)
+                }
+            }.send()
+        }
+    }
+
+    companion object {
+        val cache = LruCache<String, Bitmap>(50 * 1024)
     }
 }

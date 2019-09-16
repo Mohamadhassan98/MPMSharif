@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+    <item
+        android:id="@+id/networkItem"
+        android:icon="@drawable/ic_network_wifi_black_24dp"
+        android:title="Network"
+        tools:ignore="HardcodedText" />
+    <item
+        android:id="@+id/recyclerItem"
+        android:icon="@drawable/ic_delete_sweep_black_24dp"
+        android:title="Recycler"
+        tools:ignore="HardcodedText" />
+</menu>

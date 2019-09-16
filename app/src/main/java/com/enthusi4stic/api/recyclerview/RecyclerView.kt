@@ -114,6 +114,7 @@ class RecyclerViewAdapter<T : Any>(
                             )
                             view1.text = value
                         }
+                        // TODO Extendable
                         else -> {
                             throw OperationNotImplementedException()
                         }

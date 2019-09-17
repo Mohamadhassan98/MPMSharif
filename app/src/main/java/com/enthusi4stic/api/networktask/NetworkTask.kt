@@ -5,6 +5,7 @@ import android.content.Context
 import android.graphics.Bitmap
 import android.graphics.BitmapFactory
 import android.os.AsyncTask
+import android.os.Handler
 import android.widget.ImageView
 import androidx.collection.LruCache
 import com.beust.klaxon.Klaxon
@@ -143,12 +144,13 @@ class ImageLoadTask {
                 if (it == null) return@setOnCallBack
                 if (it.isSuccessful) {
                     val bitmap2 = BitmapFactory.decodeStream(it.body?.byteStream())
-                    cache.put(url, bitmap2)
-                    imageView.setImageBitmap(bitmap2)
+                    if(bitmap2 != null){
+                        cache.put(url, bitmap2)
+                        imageView.setImageBitmap(bitmap2)
+                    }
                 }
             }.send()
         }
     }
-
     private val cache by lazy { LruCache<String, Bitmap>(50 * 1024) }
 }

@@ -6,6 +6,7 @@
     <color name="colorSuccess">#50ef50</color>
     <color name="colorProgress">#FF6F00</color>
     <color name="colorBackground">#ededed</color>
+    <color name="colorCardBackground">#B8ADAD</color>
     <color name="colorTitle">#414141</color>
     <color name="colorSubtitle">#888888</color>
 </resources>

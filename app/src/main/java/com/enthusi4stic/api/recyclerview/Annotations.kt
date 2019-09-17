@@ -2,7 +2,7 @@ package com.enthusi4stic.api.recyclerview
 
 import org.intellij.lang.annotations.Language
 
-@Target(AnnotationTarget.FIELD)
+@Target(AnnotationTarget.PROPERTY)
 annotation class BindView(val id: String = DefaultID, val view: View, val field: Field) {
     enum class View {
         TextView, ImageView

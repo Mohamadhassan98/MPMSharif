@@ -1,7 +1,6 @@
 package com.enthusi4stic.api.recyclerview
 
 import android.content.Context
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -11,11 +10,8 @@ import androidx.annotation.LayoutRes
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.enthusi4stic.R
-import com.enthusi4stic.RecyclerFragment
 import com.enthusi4stic.api.networktask.ImageLoadTask
 import com.enthusi4stic.api.recyclerview.BindView.Companion.DefaultID
-import kotlinx.android.synthetic.main.listitem_recycler_view_fragment.view.*
 import org.intellij.lang.annotations.Language
 import java.lang.reflect.Field
 import kotlin.reflect.KClass

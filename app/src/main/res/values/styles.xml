@@ -1,12 +1,65 @@
 <resources>
 
+    <style name="splash_theme" parent="@android:style/Theme.NoTitleBar.Fullscreen"/>
+
     <style name="app_theme" parent="Theme.MaterialComponents.Light.DarkActionBar">
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
+        <item name="colorOnBackground">@color/colorBackground</item>
+        <item name="colorControlHighlight">@color/colorPrimary</item>
+        <item name="android:statusBarColor">@color/colorPrimary</item>
+        <item name="android:textViewStyle">@style/app_theme.text</item>
+    </style>
+
+    <style name="app_theme.text">
+        <item name="android:fontFamily">@font/shabnam</item>
+        <item name="android:typeface">monospace</item>
+        <item name="android:textAlignment">center</item>
+        <item name="android:gravity">center_horizontal</item>
+    </style>
+
+    <style name="app_theme.text.title" parent="app_theme.text">
+        <item name="android:textSize">30dp</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="app_theme.text.small_title" parent="app_theme.text">
+        <item name="android:textSize">20dp</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="app_theme.text.subtitle" parent="app_theme.text">
+        <item name="android:textSize">16dp</item>
+    </style>
+
+    <style name="app_theme.input_layout" parent="Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense">
+        <item name="android:layoutDirection">rtl</item>
+    </style>
+
+    <style name="app_theme.button" parent="Widget.MaterialComponents.Button">
+        <item name="android:fontFamily">@font/shabnam</item>
+        <item name="android:typeface">monospace</item>
+        <item name="android:textSize">16dp</item>
+        <item name="android:textColor">@android:color/white</item>
+        <item name="android:textAlignment">center</item>
+        <item name="android:gravity">center</item>
+    </style>
+
+    <style name="app_theme.text_button" parent="Widget.MaterialComponents.Button.TextButton">
+        <item name="android:typeface">monospace</item>
+        <item name="android:textSize">16dp</item>
+        <item name="android:textColor">@android:color/white</item>
+        <item name="android:textAlignment">center</item>
+        <item name="android:gravity">center</item>
+        <item name="rippleColor">@android:color/white</item>
     </style>
 
     <style name="enthusi4stic.circular_progress_bar_dialog" parent="android:style/Theme.Translucent">
+        <item name="android:backgroundDimEnabled">true</item>
+    </style>
+
+    <style name="enthusi4stic.horizontal_progress_bar_dialog" parent="android:style/Theme.Translucent">
         <item name="android:backgroundDimEnabled">true</item>
     </style>
 

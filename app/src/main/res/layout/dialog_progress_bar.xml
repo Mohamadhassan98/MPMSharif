@@ -15,13 +15,10 @@
 
     <TextView
         android:id="@+id/dialog_progress_bar_progress_message"
-        android:typeface="monospace"
-        android:textAlignment="center"
         android:gravity="center_horizontal"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerInParent="true"
-        android:textColor="@android:color/white"
-        android:textStyle="bold"/>
+        style="@style/app_theme.text.title"/>
 
 </RelativeLayout>

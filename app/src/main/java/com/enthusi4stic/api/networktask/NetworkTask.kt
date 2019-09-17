@@ -115,7 +115,7 @@ open class NetworkTask(
                     Method.HEAD -> it.head()
                 }
             }.also {
-                headers.forEach {header ->
+                headers.forEach { header ->
                     it.addHeader(header.first, header.second)
                 }
             }.build()
@@ -133,8 +133,8 @@ open class NetworkTask(
     }
 }
 
-class ImageLoadTask(private val url: String, private val imageView: ImageView) {
-    fun load() {
+class ImageLoadTask {
+    fun load(url: String, imageView: ImageView) {
         val bitmap = cache[url]
         if (bitmap != null) {
             imageView.setImageBitmap(bitmap)
@@ -150,7 +150,5 @@ class ImageLoadTask(private val url: String, private val imageView: ImageView) {
         }
     }
 
-    companion object {
-        val cache = LruCache<String, Bitmap>(50 * 1024)
-    }
+    private val cache by lazy { LruCache<String, Bitmap>(50 * 1024) }
 }

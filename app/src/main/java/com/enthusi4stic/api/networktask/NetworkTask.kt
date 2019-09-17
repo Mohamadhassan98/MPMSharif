@@ -135,15 +135,16 @@ open class NetworkTask(
 
 class ImageLoadTask(private val url: String, private val imageView: ImageView) {
     fun load() {
-        var bitmap = cache[url]
+        val bitmap = cache[url]
         if (bitmap != null) {
             imageView.setImageBitmap(bitmap)
         } else {
             NetworkTask(url).setOnCallBack {
                 if (it == null) return@setOnCallBack
                 if (it.isSuccessful) {
-                    bitmap = BitmapFactory.decodeStream(it.body?.byteStream())
-                    imageView.setImageBitmap(bitmap)
+                    val bitmap2 = BitmapFactory.decodeStream(it.body?.byteStream())
+                    cache.put(url, bitmap2)
+                    imageView.setImageBitmap(bitmap2)
                 }
             }.send()
         }

@@ -59,4 +59,8 @@
         <item name="android:backgroundDimEnabled">true</item>
     </style>
 
+    <style name="enthusi4stic.horizontal_progress_bar_dialog" parent="android:style/Theme.Translucent">
+        <item name="android:backgroundDimEnabled">true</item>
+    </style>
+
 </resources>

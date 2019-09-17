@@ -13,11 +13,9 @@
             android:id="@+id/frameLayout"
             android:layout_width="match_parent"
             android:layout_height="match_parent">
-            <ImageView
-                    android:layout_width="248dp"
-                    android:layout_height="230dp"
-                    android:src="@android:drawable/btn_dialog"
-                    android:id="@+id/imageView3"/>
+
+
+
         </FrameLayout>
 
         <com.google.android.material.navigation.NavigationView

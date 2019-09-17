@@ -1,10 +1,15 @@
 package com.enthusi4stic
 
 import android.os.Bundle
+import android.os.Environment
 import android.view.MenuItem
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
+import com.enthusi4stic.api.networktask.DownloadTask
+import com.enthusi4stic.api.networktask.UploadTask
+import com.google.android.material.snackbar.Snackbar
 import kotlinx.android.synthetic.main.activity_main.*
+import java.io.File
 
 class MainActivity : AppCompatActivity() {
 

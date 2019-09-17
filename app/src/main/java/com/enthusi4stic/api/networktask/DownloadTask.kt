@@ -68,7 +68,7 @@ class DownloadTask(
                 out.close()
                 true
             }
-            false
+            else false
         } catch (e: Exception) {
             e.printStackTrace()
             false

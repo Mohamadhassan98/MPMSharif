@@ -10,6 +10,7 @@ import androidx.annotation.LayoutRes
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.enthusi4stic.api.networktask.ImageLoadTask
 import com.enthusi4stic.api.recyclerview.BindView.Companion.DefaultID
 import org.intellij.lang.annotations.Language
 import java.lang.reflect.Field
@@ -40,6 +41,8 @@ class RecyclerViewAdapter<T : Any>(
 
         abstract fun getLayoutManager(context: Context): RecyclerView.LayoutManager
     }
+
+    val imageLoadTask = ImageLoadTask()
 
     private val views = mutableMapOf<BindView, View>()
     private val fields = mutableMapOf<BindView, Field>()
@@ -232,7 +235,7 @@ class RecyclerViewAdapter<T : Any>(
                                     CharSequence::class.simpleName,
                                     value::class.simpleName
                                 )
-
+                                imageLoadTask.load(value.toString(), view1)
                             }
                             else -> {
                                 throw OperationNotImplementedException()

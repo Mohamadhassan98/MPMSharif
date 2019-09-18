@@ -135,6 +135,7 @@ open class NetworkTask(
 }
 
 class ImageLoadTask {
+    @Deprecated(message = "Compressing problem!")
     fun load(url: String, imageView: ImageView) {
         val bitmap = cache[url]
         if (bitmap != null) {
@@ -152,5 +153,8 @@ class ImageLoadTask {
             }.send()
         }
     }
-    private val cache by lazy { LruCache<String, Bitmap>(50 * 1024) }
+
+    companion object {
+        private val cache by lazy { LruCache<String, Bitmap>(50 * 1024) }
+    }
 }

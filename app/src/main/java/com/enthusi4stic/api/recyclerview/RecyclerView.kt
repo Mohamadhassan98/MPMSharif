@@ -10,6 +10,7 @@ import androidx.annotation.LayoutRes
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
 import com.enthusi4stic.api.networktask.ImageLoadTask
 import com.enthusi4stic.api.recyclerview.BindView.Companion.DefaultID
 import org.intellij.lang.annotations.Language
@@ -231,7 +232,8 @@ class RecyclerViewAdapter<T : Any>(
                                     CharSequence::class.simpleName,
                                     value::class.simpleName
                                 )
-                                imageLoadTask.load(value.toString(), view1)
+                                // imageLoadTask.load(value.toString(), view1)
+                                Glide.with(context).load(value.toString()).placeholder(view1.drawable).into(view1)
                             }
                             else -> {
                                 throw OperationNotImplementedException()

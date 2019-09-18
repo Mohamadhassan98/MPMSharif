@@ -55,6 +55,21 @@
         <item name="rippleColor">@android:color/white</item>
     </style>
 
+    <style name="app_theme.card_view" parent="Widget.MaterialComponents.CardView">
+        <item name="android:clickable">true</item>
+        <item name="android:focusable">true</item>
+        <item name="cardElevation">10dp</item>
+        <item name="cardCornerRadius">10dp</item>
+        <item name="strokeWidth">2dp</item>
+        <item name="strokeColor">@color/colorPrimary</item>
+        <item name="rippleColor">@color/colorPrimary</item>
+    </style>
+
+    <style name="app_theme.circle_image_view">
+        <item name="civ_border_width">2dp</item>
+        <item name="civ_border_color">@color/colorPrimary</item>
+    </style>
+
     <style name="enthusi4stic.circular_progress_bar_dialog" parent="android:style/Theme.Translucent">
         <item name="android:backgroundDimEnabled">true</item>
     </style>

@@ -233,7 +233,7 @@ class RecyclerViewAdapter<T : Any>(
                                     value::class.simpleName
                                 )
                                 // imageLoadTask.load(value.toString(), view1)
-                                Glide.with(context).load(value.toString()).placeholder(view1.drawable).into(view1)
+                                Glide.with(context).load(value.toString()).timeout(30000).placeholder(view1.drawable).into(view1)
                             }
                             else -> {
                                 throw OperationNotImplementedException()

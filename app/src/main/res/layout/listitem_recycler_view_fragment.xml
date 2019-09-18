@@ -1,50 +1,48 @@
 <?xml version="1.0" encoding="utf-8"?>
-<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:layout_width="match_parent"
-    android:layout_height="100dp"
-    android:layout_margin="10dp"
-    android:clickable="true"
-    android:elevation="10dp"
-    android:focusable="true"
-    app:cardCornerRadius="10dp"
-    app:rippleColor="@color/colorPrimary"
-    app:strokeColor="@color/colorAccent"
-    app:strokeWidth="2dp">
-        <androidx.constraintlayout.widget.ConstraintLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
+<com.google.android.material.card.MaterialCardView
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:layout_margin="5dp"
+        style="@style/app_theme.card_view">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
             android:background="@color/colorBackground">
 
-            <de.hdodenhof.circleimageview.CircleImageView
-                android:id="@+id/circleImageView"
+        <de.hdodenhof.circleimageview.CircleImageView
+                android:id="@+id/listitem_recycler_view_fragment_circle_image_view"
                 android:layout_width="75dp"
                 android:layout_height="75dp"
                 android:layout_marginEnd="8dp"
+                style="@style/app_theme.circle_image_view"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+                app:layout_constraintTop_toTopOf="parent"
+                android:src="@drawable/four"/>
 
-            <com.google.android.material.textview.MaterialTextView
+        <com.google.android.material.textview.MaterialTextView
                 style="@style/app_theme.text.subtitle"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="8dp"
                 android:layout_marginEnd="8dp"
                 android:gravity="right"
-                android:text="Email"
                 android:textAlignment="gravity"
                 android:textSize="20dp"
                 android:textStyle="bold"
-                app:layout_constraintBottom_toTopOf="@+id/materialTextView"
-                app:layout_constraintEnd_toStartOf="@+id/circleImageView"
+                app:layout_constraintBottom_toTopOf="@+id/listitem_recycler_view_fragment_text_view_phone"
+                app:layout_constraintEnd_toStartOf="@+id/listitem_recycler_view_fragment_circle_image_view"
                 app:layout_constraintHorizontal_bias="0.492"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="@+id/circleImageView"
-                app:layout_constraintVertical_bias="0.0" />
+                app:layout_constraintTop_toTopOf="@+id/listitem_recycler_view_fragment_circle_image_view"
+                app:layout_constraintVertical_bias="0.0"
+                android:id="@+id/listitem_recycler_view_fragment_text_view_email"/>
 
-            <com.google.android.material.textview.MaterialTextView
-                android:id="@+id/materialTextView"
+        <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/listitem_recycler_view_fragment_text_view_phone"
                 style="@style/app_theme.text.subtitle"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
@@ -52,11 +50,10 @@
                 android:layout_marginEnd="8dp"
                 android:layout_marginBottom="16dp"
                 android:gravity="right"
-                android:text="Phone"
                 android:textAlignment="gravity"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toStartOf="@+id/circleImageView"
+                app:layout_constraintEnd_toStartOf="@+id/listitem_recycler_view_fragment_circle_image_view"
                 app:layout_constraintHorizontal_bias="0.501"
-                app:layout_constraintStart_toStartOf="parent" />
-        </androidx.constraintlayout.widget.ConstraintLayout>
+                app:layout_constraintStart_toStartOf="parent"/>
+    </androidx.constraintlayout.widget.ConstraintLayout>
 </com.google.android.material.card.MaterialCardView>

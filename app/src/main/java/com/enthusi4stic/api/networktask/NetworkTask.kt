@@ -81,10 +81,12 @@ open class NetworkTask(
         }
     }
 
-    private var onCallBack: (Response?) -> Unit = {}
+    private var onCallBack: (Pair<Response?, String?>) -> Unit = {}
 
-    fun setOnCallBack(callback: (Response?) -> Unit): NetworkTask {
-        onCallBack = callback
+    fun setOnCallBack(callback: (Response?, String?) -> Unit): NetworkTask {
+        onCallBack = {
+            callback(it.first, it.second)
+        }
         return this
     }
 
@@ -93,7 +95,7 @@ open class NetworkTask(
     }
 
     @SuppressLint("StaticFieldLeak")
-    inner class Task : AsyncTask<RequestBody, Unit, Response>() {
+    inner class Task : AsyncTask<RequestBody, Unit, Pair<Response?, String?>>() {
 
         var progressDialog: CircularProgressBarDialog? = null
 
@@ -120,13 +122,14 @@ open class NetworkTask(
                     it.addHeader(header.first, header.second)
                 }
             }.build()
-            OkHttpClient().newCall(request).execute()
+            val response = OkHttpClient().newCall(request).execute()
+            response to response.body?.string()
         } catch (e: Exception) {
             e.printStackTrace()
             null
         }
 
-        override fun onPostExecute(result: Response?) {
+        override fun onPostExecute(result: Pair<Response?, String?>) {
             super.onPostExecute(result)
             progressDialog?.dismiss()
             onCallBack(result)
@@ -141,7 +144,7 @@ class ImageLoadTask {
         if (bitmap != null) {
             imageView.setImageBitmap(bitmap)
         } else {
-            NetworkTask(url).setOnCallBack {
+            NetworkTask(url).setOnCallBack {it, _ ->
                 if (it == null) return@setOnCallBack
                 if (it.isSuccessful) {
                     val bitmap2 = BitmapFactory.decodeStream(it.body?.byteStream())

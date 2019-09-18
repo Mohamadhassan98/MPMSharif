@@ -19,6 +19,7 @@ class SplashActivity: Activity(){
 
             override fun onAnimationEnd(animation: Animation?) {
                 startActivity(Intent(this@SplashActivity, MainActivity::class.java))
+                finish()
             }
 
             override fun onAnimationStart(animation: Animation?) {}

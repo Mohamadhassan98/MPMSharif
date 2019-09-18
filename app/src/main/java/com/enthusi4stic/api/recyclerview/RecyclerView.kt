@@ -48,8 +48,8 @@ class RecyclerViewAdapter<T : Any>(
     private val fields = mutableMapOf<BindView, Field>()
     private var bindAction: ((View, T, Int) -> Unit)? = null
     private var onItemClickListener: ((T, Int) -> Unit)? = null
-    private var onHeaderClickListener: (() -> Unit)? = null
-    private var onFooterClickListener: (() -> Unit)? = null
+    private var onHeaderClickListener: ((View) -> Unit)? = null
+    private var onFooterClickListener: ((View) -> Unit)? = null
 
     fun setCustomBind(bind: View.(T, Int) -> Unit): RecyclerViewAdapter<T> {
         bindAction = bind
@@ -68,12 +68,12 @@ class RecyclerViewAdapter<T : Any>(
         return this
     }
 
-    fun setOnHeaderClickListener(action: () -> Unit): RecyclerViewAdapter<T> {
+    fun setOnHeaderClickListener(action: (View) -> Unit): RecyclerViewAdapter<T> {
         onHeaderClickListener = action
         return this
     }
 
-    fun setOnFooterClickListener(action: () -> Unit): RecyclerViewAdapter<T> {
+    fun setOnFooterClickListener(action: (View) -> Unit): RecyclerViewAdapter<T> {
         onFooterClickListener = action
         return this
     }
@@ -139,7 +139,7 @@ class RecyclerViewAdapter<T : Any>(
             when (getItemViewType(position)) {
                 HEADER, FOOTER -> {
                 }
-                ITEM -> holder.bind(list[position], position)
+                ITEM -> holder.bind(list[if (hasHeader) position - 1 else position], position)
             }
         }
 
@@ -149,18 +149,14 @@ class RecyclerViewAdapter<T : Any>(
                 HEADER -> {
                     val headerView = inflater.inflate(headerLayoutId, parent, attachToRoot)
                     onHeaderClickListener?.let {
-                        headerView.setOnClickListener { _ ->
-                            it()
-                        }
+                        it(headerView)
                     }
                     return ViewHolder(headerView)
                 }
                 FOOTER -> {
                     val footerView = inflater.inflate(footerLayoutId, parent, attachToRoot)
                     onFooterClickListener?.let {
-                        footerView.setOnClickListener { _ ->
-                            it()
-                        }
+                        it(footerView)
                     }
                     return ViewHolder(footerView)
                 }
